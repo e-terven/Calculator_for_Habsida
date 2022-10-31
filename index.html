@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2022.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 24.0px; font: 14.0px Times; color: #000000; -webkit-text-stroke: #a4bfff; background-color: #000000; background-color: rgba(0, 0, 0, 0)}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p2">const question = 'Input:'</p>
+<p class="p2">console.log(question);<span class="Apple-converted-space"> </span></p>
+<p class="p2">let string_equation = ("1 +3-9").split(" ").join("");</p>
+<p class="p2">console.log(string_equation)</p>
+<p class="p3"><br></p>
+<p class="p2">// get NUMBERS<span class="Apple-converted-space"> </span></p>
+<p class="p2">let split_o = ["*", "/", "-", "+"];</p>
+<p class="p2">let equation_n_gaps = string_equation;</p>
+<p class="p2">for (let i=0; i &lt; split_o.length; i++) {</p>
+<p class="p2">  equation_n_gaps = equation_n_gaps.split(split_o[i]).join(",");</p>
+<p class="p2">}<span class="Apple-converted-space"> </span></p>
+<p class="p2">equation_n_gaps = equation_n_gaps.split(",");</p>
+<p class="p2">let equation_n = equation_n_gaps.filter((item) =&gt; item !== '') //just in case</p>
+<p class="p2">//console.log(equation_n);</p>
+<p class="p3"><br></p>
+<p class="p2">// check NUMBER VALUE</p>
+<p class="p2">try {</p>
+<p class="p2"><span class="Apple-converted-space">  </span>for (let i=0; i &lt; equation_n.length; i++) {</p>
+<p class="p2"><span class="Apple-converted-space">  </span>if (equation_n[i] % 1!== 0 || equation_n[i] &gt; 10 || equation_n[i] &lt; 1) {</p>
+<p class="p2"><span class="Apple-converted-space">    </span>throw new SyntaxError("Try again");</p>
+<p class="p2"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2">}</p>
+<p class="p2">catch(e) {</p>
+<p class="p2"><span class="Apple-converted-space">  </span>console.log(e.message);<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">  </span>return;</p>
+<p class="p2">}</p>
+<p class="p3"><span class="Apple-converted-space">  </span></p>
+<p class="p2">// get OPERATORS</p>
+<p class="p2">function arrRange(max,min) {</p>
+<p class="p2"><span class="Apple-converted-space">  </span>let arr = [];</p>
+<p class="p2"><span class="Apple-converted-space">  </span>for (let i = max; i &gt;= min; i--)</p>
+<p class="p2"><span class="Apple-converted-space">  </span>arr.push(i);</p>
+<p class="p2"><span class="Apple-converted-space">  </span>return arr;<span class="Apple-converted-space"> </span></p>
+<p class="p2">};</p>
+<p class="p2">let i = 0;</p>
+<p class="p2">let split_n = arrRange(10,1);</p>
+<p class="p2">let equation_o_gaps = string_equation;</p>
+<p class="p2">while (i &lt; split_n.length) {</p>
+<p class="p2">equation_o_gaps = equation_o_gaps.split(split_n[i]).join(",");</p>
+<p class="p2">i++;</p>
+<p class="p2">}</p>
+<p class="p2">equation_o_gaps = equation_o_gaps.split(",")</p>
+<p class="p2">equation_o = equation_o_gaps.filter((item) =&gt; item !== '')</p>
+<p class="p2">console.log(equation_o)</p>
+<p class="p3"><br></p>
+<p class="p2">// check AMOUNT and RATIO of NUMBERS and OPERSTORS</p>
+<p class="p2">try {<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">  </span>let num_max = 3;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>let op_max = 2;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>if (equation_n.length &gt; num_max || equation_o.length &gt;<span class="Apple-converted-space">  </span>op_max || equation_n.length !== equation_o.length + 1) {</p>
+<p class="p2"><span class="Apple-converted-space">    </span>throw new SyntaxError("Incomplete data");</p>
+<p class="p2"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2">}</p>
+<p class="p2">catch(e) {</p>
+<p class="p2"><span class="Apple-converted-space">  </span>console.log("Error: " + e.message );<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">  </span>return;</p>
+<p class="p2">}</p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p2">//COMBINE EQUATION</p>
+<p class="p2">let equation = [];</p>
+<p class="p2">for (let i = 0; i &lt; equation_o.length; i++) {</p>
+<p class="p2"><span class="Apple-converted-space">  </span>equation.push(equation_n[i]);</p>
+<p class="p2"><span class="Apple-converted-space">  </span>equation.push(equation_o[i]);</p>
+<p class="p2">}<span class="Apple-converted-space"> </span></p>
+<p class="p2">equation.push(equation_n[equation_n.length-1]);</p>
+<p class="p2">console.log(equation)</p>
+<p class="p3"><br></p>
+<p class="p2">// CALCULATION</p>
+<p class="p2">//split_o = ["*", "/", "-", "+"]</p>
+<p class="p2">result_of_three1 = 0;</p>
+<p class="p2">result_of_three = 0;</p>
+<p class="p3"><br></p>
+<p class="p2">for (let i = 0; i &lt;= split_o.length; i++) {</p>
+<p class="p2"><span class="Apple-converted-space">  </span>if (equation.length === 1) {</p>
+<p class="p2"><span class="Apple-converted-space">    </span>console.log(Number(equation));</p>
+<p class="p2"><span class="Apple-converted-space">    </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space"> </span>for (let j = 0; j &lt; equation.length; j++) {</p>
+<p class="p2"><span class="Apple-converted-space">    </span>if (equation.length === 1) {</p>
+<p class="p2"><span class="Apple-converted-space">    </span>console.log(Number(equation));</p>
+<p class="p2"><span class="Apple-converted-space">    </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>} else if (split_o[i] === equation[3]) {</p>
+<p class="p2"><span class="Apple-converted-space">     </span>let a = +equation[2];</p>
+<p class="p2"><span class="Apple-converted-space">     </span>let b = +equation[4];</p>
+<p class="p2"><span class="Apple-converted-space">     </span>switch (split_o[i]) {</p>
+<p class="p2"><span class="Apple-converted-space">      </span>case "*":</p>
+<p class="p2"><span class="Apple-converted-space">        </span>result_of_three = a * b;</p>
+<p class="p2"><span class="Apple-converted-space">        </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">      </span>case "/":</p>
+<p class="p2"><span class="Apple-converted-space">        </span>result_of_three = a / b;</p>
+<p class="p2"><span class="Apple-converted-space">        </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">      </span>case "-":</p>
+<p class="p2"><span class="Apple-converted-space">        </span>result_of_three = a - b;</p>
+<p class="p2"><span class="Apple-converted-space">        </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">      </span>case "+":</p>
+<p class="p2"><span class="Apple-converted-space">        </span>result_of_three = a + b;</p>
+<p class="p2"><span class="Apple-converted-space">        </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">     </span>}</p>
+<p class="p2"><span class="Apple-converted-space">     </span>console.log(result_of_three)</p>
+<p class="p2"><span class="Apple-converted-space">     </span>equation.splice(3,1,String(result_of_three));</p>
+<p class="p2"><span class="Apple-converted-space">     </span>equation.splice(2,1);</p>
+<p class="p2"><span class="Apple-converted-space">     </span>equation.splice(3,1);<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">     </span>//console.log(equation);// [ '2', '*', '90' ]</p>
+<p class="p2"><span class="Apple-converted-space">  </span>} else if (split_o[i] === equation[1]) {</p>
+<p class="p2"><span class="Apple-converted-space">     </span>let a = +equation[0];</p>
+<p class="p2"><span class="Apple-converted-space">     </span>let b = +equation[2];</p>
+<p class="p2"><span class="Apple-converted-space">      </span>switch (split_o[i]) {</p>
+<p class="p2"><span class="Apple-converted-space">        </span>case "*":</p>
+<p class="p2"><span class="Apple-converted-space">          </span>result_of_three = a * b;</p>
+<p class="p2"><span class="Apple-converted-space">          </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">        </span>case "/":</p>
+<p class="p2"><span class="Apple-converted-space">          </span>result_of_three = a / b;</p>
+<p class="p2"><span class="Apple-converted-space">          </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">        </span>case "-":</p>
+<p class="p2"><span class="Apple-converted-space">          </span>result_of_three = a - b;</p>
+<p class="p2"><span class="Apple-converted-space">          </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">        </span>case "+":</p>
+<p class="p2"><span class="Apple-converted-space">          </span>result_of_three = a + b;</p>
+<p class="p2"><span class="Apple-converted-space">          </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">       </span>}</p>
+<p class="p2"><span class="Apple-converted-space">     </span>console.log(result_of_three)</p>
+<p class="p2"><span class="Apple-converted-space">     </span>equation.splice(1,1,String(result_of_three));</p>
+<p class="p2"><span class="Apple-converted-space">     </span>equation.splice(0,1);</p>
+<p class="p2"><span class="Apple-converted-space">     </span>equation.splice(1,1);</p>
+<p class="p2"><span class="Apple-converted-space">     </span>//console.log(equation);</p>
+<p class="p2"><span class="Apple-converted-space">   </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span>}<span class="Apple-converted-space"> </span></p>
+<p class="p2">}</p>
+<p class="p2">&lt;script&gt;</p>
+</body>
+</html>
